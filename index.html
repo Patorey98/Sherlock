@@ -235,6 +235,163 @@ button { font-size: 17px; }
   .love-watermark { top: 72% !important; }
 }
 
+
+/* ===== Ajustes móviles v5 ===== */
+
+/* PÁGINA 1 — encabezado de la sociedad en una sola línea */
+#reservation .kicker {
+  white-space: nowrap;
+  font-size: clamp(9px, 2.75vw, 12.5px);
+  letter-spacing: clamp(.35px, .45vw, 1.5px);
+  line-height: 1.15;
+}
+
+/* PÁGINA 1 — tabla más ancha, compacta y sin cortes en los datos */
+#reservation .info {
+  margin-left: -7px;
+  margin-right: -7px;
+}
+#reservation .info .row {
+  grid-template-columns: 27% 73%;
+}
+#reservation .info .cell {
+  padding: 10px 6px;
+  white-space: nowrap;
+}
+#reservation .info .cell:first-child {
+  font-size: clamp(9px, 2.55vw, 10.8px);
+  letter-spacing: .15px;
+}
+#reservation .info .cell:last-child {
+  font-size: clamp(10px, 2.95vw, 13px);
+  letter-spacing: -.2px;
+}
+
+/* Huella más realista y limpia */
+.fingerprint-button {
+  width: 88px;
+  height: 88px;
+  min-height: 88px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 28%, rgba(255,255,255,.22), transparent 27%),
+    linear-gradient(145deg, #b18a50, #75542e);
+  box-shadow:
+    0 4px 0 #49341d,
+    inset 0 0 0 1px rgba(255,255,255,.18),
+    inset 0 0 18px rgba(255,244,214,.12);
+}
+.fingerprint-button svg {
+  width: 54px;
+  height: 54px;
+}
+.fingerprint-button svg path {
+  stroke-width: 2.35;
+}
+
+/* TABLAS DE EVIDENCIA — mismo lenguaje visual que la tabla de la página 1 */
+.location-evidence,
+#finalScreen .evidence {
+  margin: 21px 0;
+  padding: 0;
+  background: transparent !important;
+  color: #3f3020 !important;
+  border: 1px solid var(--line);
+  font-family: "Courier New", Courier, monospace !important;
+  line-height: 1.35;
+}
+
+/* Tabla de ubicación */
+.location-evidence .evidence-check {
+  min-height: 40px;
+  padding: 8px 9px;
+  border-bottom: 1px solid rgba(105,77,38,.38);
+  color: #3f3020;
+}
+.location-evidence .evidence-check:last-child {
+  border-bottom: 0;
+}
+.location-evidence .dots {
+  border-bottom-color: rgba(105,77,38,.55);
+}
+.location-evidence .ok {
+  color: #526b3f;
+}
+.location-evidence .warn {
+  color: #8b542b;
+}
+
+/* Tabla final — copiar visualmente la estructura de la tabla de la página 1 */
+#finalScreen .evidence .row {
+  grid-template-columns: 43% 57%;
+  border-bottom: 1px solid rgba(105,77,38,.38);
+}
+#finalScreen .evidence .row:last-child {
+  border-bottom: 0;
+}
+#finalScreen .evidence .cell {
+  padding: 11px 10px;
+  color: #3f3020;
+}
+#finalScreen .evidence .cell:first-child {
+  color: #705a3c;
+  border-right: 1px solid rgba(105,77,38,.35);
+}
+#finalScreen .evidence .cell.ok {
+  color: #526b3f;
+}
+
+/* PÁGINA 6 — primero evento, después la pregunta */
+.fa-event {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+.event-date {
+  white-space: nowrap;
+  font-size: clamp(13px, 3.75vw, 17px) !important;
+  letter-spacing: -.25px;
+  line-height: 1.1;
+}
+.reveal-question {
+  font-size: clamp(20px, 5.7vw, 25px) !important;
+  line-height: 1.06 !important;
+  margin: 14px auto 18px !important;
+  max-width: 100%;
+  letter-spacing: -.15px;
+}
+
+/* Ajustes adicionales para pantallas muy angostas */
+@media(max-width:350px) {
+  #reservation .kicker {
+    font-size: 8.7px;
+    letter-spacing: .15px;
+  }
+  #reservation .info {
+    margin-left: -9px;
+    margin-right: -9px;
+  }
+  #reservation .info .row {
+    grid-template-columns: 26% 74%;
+  }
+  #reservation .info .cell {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  #reservation .info .cell:first-child {
+    font-size: 8.6px;
+  }
+  #reservation .info .cell:last-child {
+    font-size: 9.6px;
+  }
+  .event-date {
+    font-size: 12.4px !important;
+    letter-spacing: -.45px;
+  }
+  .reveal-question {
+    font-size: 19px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -256,14 +413,21 @@ button { font-size: 17px; }
 <p>El expediente contiene información confidencial sobre el caso. Deberá identificarse con su huella dactilar para acceder a la evidencia.</p>
 <button class="fingerprint-button" onclick="verifyTheft()" aria-label="Identificarse con huella dactilar">
 <svg viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M18 28c0-8 6-14 14-14s14 6 14 14"/>
-  <path d="M13 29c0-11 8-20 19-20s19 9 19 20"/>
-  <path d="M22 31c0-6 4-10 10-10s10 4 10 10c0 12-3 21-8 27"/>
-  <path d="M17 33c0 11-1 17-5 23"/>
-  <path d="M27 32c0-3 2-5 5-5s5 2 5 5c0 11-2 18-6 25"/>
-  <path d="M47 33c0 12-2 20-7 27"/>
-  <path d="M22 39c0 8-2 14-5 19"/>
-  <path d="M32 34c0 10-1 17-5 24"/>
+  <path d="M10 30c0-12.2 9.8-22 22-22s22 9.8 22 22"/>
+  <path d="M14.5 31c0-9.9 7.8-18 17.5-18s17.5 8.1 17.5 18"/>
+  <path d="M19 32c0-7.5 5.8-13.5 13-13.5S45 24.5 45 32"/>
+  <path d="M23.5 33c0-4.9 3.8-8.8 8.5-8.8s8.5 3.9 8.5 8.8"/>
+  <path d="M28 34c0-2.4 1.8-4.3 4-4.3s4 1.9 4 4.3"/>
+  <path d="M10 35c0 8.2-1.5 14.4-5 20"/>
+  <path d="M15 35c0 10.4-1.7 17.4-6 23"/>
+  <path d="M20 35c0 11.6-2 19.1-6.4 25"/>
+  <path d="M25 35c0 12.2-2 19.9-5.3 25"/>
+  <path d="M30 35c0 11.7-1.4 19.6-4.1 25"/>
+  <path d="M35 35c0 11.1-.8 18.8-2.6 25"/>
+  <path d="M40 35c0 10.1-.3 17.6-1.6 24"/>
+  <path d="M45 35c0 8.7.3 15.2-.5 21"/>
+  <path d="M50 35c0 6.8.7 12.1.2 17"/>
+  <path d="M54 35c0 4.4.8 8 .7 11"/>
 </svg>
 </button>
 <div class="fingerprint-caption">IDENTIFICAR CON HUELLA</div>
@@ -312,17 +476,17 @@ button { font-size: 17px; }
 <div class="kicker">Archivo recuperado · Caso cerrado</div><h2>RESERVA RECUPERADA</h2><div class="rule">❧</div>
 <div id="loader" class="loader-wrap"><div class="loader-label">Recuperando entradas...</div><div class="progress"><div id="progressFill" class="progress-fill"></div></div><div id="percent" class="percent">0%</div></div>
 <div id="loveReveal" class="love-reveal">
-<div class="love-title reveal-question">¿QUERES ACOMPAÑARME A NUESTRO PRIMER RECITAL JUNTOS AMOR 💖?</div>
 <div class="fa-event">
   <div class="ornament-title">Gran Fiesta Fa!</div>
   <div class="event-date">08 de noviembre de 2026 · Movistar Arena</div>
 </div>
+<div class="love-title reveal-question">¿QUERES ACOMPAÑARME A NUESTRO PRIMER RECITAL JUNTOS AMOR 💖?</div>
 <div class="file-stamp">CASO CERRADO</div>
 <div class="answer-buttons">
   <button onclick="openTickets()">SI</button>
   <button onclick="openTickets()">OBVIO</button>
   <button onclick="openTickets()"><s>NO</s> SI, ACEPTO</button>
-  <button onclick="openTickets()">ESTOY DE NOVIA</button>
+  <button onclick="openTickets()">ESTOY DE NOVIA ☺️</button>
   <button onclick="openTickets()">MEX AHI VOOOOY</button>
 </div>
 </div>
