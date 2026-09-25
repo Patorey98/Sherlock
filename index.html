@@ -474,6 +474,24 @@ button { font-size: 17px; }
   text-justify: inter-word;
   hyphens: auto;
 }
+
+/* ===== Ajustes puntuales v8 ===== */
+.force-justify {
+  text-align: justify !important;
+  text-align-last: left !important;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.event-date {
+  font-size: clamp(13.5px, 3.9vw, 17.8px) !important;
+}
+
+/* Mantener el sello final separado de los botones */
+#loveReveal .file-stamp {
+  margin-top: 16px;
+}
+
 </style>
 </head>
 <body>
@@ -482,7 +500,7 @@ button { font-size: 17px; }
 <div class="kicker">The Sherlock Holmes Society · London</div>
 <h1 class="confidential-title">EXPEDIENTE<br>CONFIDENCIAL</h1><div class="subtitle">Registro de investigación · SH-081126</div><div class="rule">❧</div>
 <div class="file-stamp">CASO EN CURSO</div>
-<p class="center"><strong>Det. Leila Maya</strong></p>
+<p class="center"><strong>Atte. Det. Leila Maya</strong></p>
 <p class="justified-copy">Se ha abierto un expediente a su nombre. Antes de autorizar el acceso al caso, deberán verificarse los datos registrados.</p>
 <div class="info">
 <div class="row"><div class="cell">Fecha</div><div class="cell">8 de noviembre de 2026</div></div>
@@ -491,8 +509,8 @@ button { font-size: 17px; }
 <div class="row"><div class="cell">Caso asignado</div><div class="cell">El misterioso caso de Lord Farena</div></div>
 </div>
 <div class="question"><h2>Verificación del expediente</h2>
-<p>Se requiere confirmar el lugar donde tuvo lugar <strong>el hurto</strong>.</p>
-<p>El expediente contiene información confidencial sobre el caso. Deberá identificarse con su huella dactilar para acceder a la evidencia.</p>
+<p class="force-justify">Se requiere confirmar el lugar donde tuvo lugar <strong>el hurto</strong>.</p>
+<p class="force-justify">El expediente contiene información confidencial sobre el caso. Deberá identificarse con su huella dactilar para acceder a la evidencia.</p>
 <button class="fingerprint-button" onclick="verifyTheft()" aria-label="Identificarse con huella dactilar">
 <svg viewBox="0 0 64 64" aria-hidden="true">
   <path d="M10 30c0-12.2 9.8-22 22-22s22 9.8 22 22"/>
@@ -542,14 +560,14 @@ button { font-size: 17px; }
 
 <section id="finalScreen" class="screen hidden"><div class="dossier"><div class="paper">
 <div class="kicker">THE SHERLOCK HOLMES SOCIETY · LONDON</div><h2>ANÁLISIS COMPLETO</h2><div class="rule">❧</div>
-<p class="center">Se ha detectado el verdadero destino de esta reserva.</p>
+<p class="force-justify">Se ha detectado el verdadero destino de esta reserva.</p>
 <div class="evidence">
 <div class="row"><div class="cell">Ubicación</div><div class="cell ok">MOVISTAR ARENA ✓</div></div>
 <div class="row"><div class="cell">Fecha</div><div class="cell ok">08.11.2026 ✓</div></div>
 <div class="row"><div class="cell">Acompañante</div><div class="cell ok">PATO ✓</div></div>
 <div class="row"><div class="cell">Destinataria</div><div class="cell ok">LEILA MAYA ✓</div></div>
 </div>
-<div class="reveal-title">ENTRADAS ENCONTRADAS</div><p class="center">La verdadera reserva ha sido recuperada satisfactoriamente.</p>
+<div class="reveal-title">ENTRADAS ENCONTRADAS</div><p class="force-justify">La verdadera reserva ha sido recuperada satisfactoriamente.</p>
 <button onclick="showRecovery()">RECUPERAR ENTRADAS</button>
 </div></div></section>
 
@@ -563,7 +581,7 @@ button { font-size: 17px; }
   <div class="event-date">08 de noviembre de 2026 · Movistar Arena</div>
 </div>
 <div class="love-title reveal-question">¿QUERES ACOMPAÑARME A NUESTRO PRIMER RECITAL JUNTOS AMOR 💖?</div>
-<div class="file-stamp">CASO CERRADO</div>
+
 <div class="answer-buttons">
   <button onclick="openTickets()">SI</button>
   <button onclick="openTickets()">OBVIO</button>
@@ -571,6 +589,7 @@ button { font-size: 17px; }
   <button onclick="openTickets()">ESTOY DE NOVIA ☺️</button>
   <button onclick="openTickets()">MEX AHI VOOOOY</button>
 </div>
+<div class="file-stamp">CASO CERRADO</div>
 </div>
 </div></div></section>
 
