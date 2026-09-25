@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Expediente SH-081126</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IM+Fell+English&display=swap');
+:root{--paper:#e5d7b8;--ink:#2b2118;--faded:#68563c;--line:#92784e;--red:#762f2c;--gold:#9a783f;--pink:#b55b7e}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{min-height:100vh;padding:14px;color:var(--ink);background:radial-gradient(circle at 50% 20%,rgba(255,244,207,.1),transparent 35%),repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),#251c16;font-family:"IM Fell English",Georgia,serif}
+body:before{content:"";position:fixed;inset:7px;border:1px solid rgba(194,157,91,.35);pointer-events:none}
+.screen{width:100%;max-width:520px;min-height:calc(100vh - 28px);margin:auto;display:flex;align-items:center;justify-content:center}
+.dossier{width:100%;padding:8px;background:#8b6c3d;box-shadow:0 16px 45px #0009}
+.paper{min-height:calc(100vh - 44px);position:relative;padding:38px 22px 34px;background:linear-gradient(rgba(255,255,255,.08),rgba(0,0,0,.025)),repeating-linear-gradient(0deg,rgba(80,55,25,.018) 0 1px,transparent 1px 5px),var(--paper);border:1px solid #5d472b;box-shadow:inset 0 0 55px rgba(85,59,26,.18)}
+.paper:before{content:"";position:absolute;inset:10px;border:1px solid rgba(113,86,45,.55);pointer-events:none}
+.paper:after{content:"❦";position:absolute;right:17px;top:13px;color:var(--gold);font-size:22px}
+.hidden{display:none!important}
+.kicker{text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#4c3824}
+h1,h2{font-family:"Cormorant Garamond",Georgia,serif;color:#302218;text-align:center}
+h1{font-size:43px;line-height:.95;margin:8px 0 5px}h2{font-size:34px;line-height:1;margin:7px 0 12px}
+.subtitle{text-align:center;font-style:italic;color:var(--faded);font-size:15px}
+.rule{display:flex;align-items:center;gap:10px;margin:19px 0 22px;color:var(--gold)}.rule:before,.rule:after{content:"";height:1px;background:var(--line);flex:1}
+.file-stamp{display:block;width:max-content;max-width:100%;margin:15px auto;padding:7px 11px;border:2px solid var(--red);color:var(--red);transform:rotate(-3deg);font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;letter-spacing:2px;font-size:13px}
+p{font-size:15px;line-height:1.65}.center{text-align:center}
+.info{margin:21px 0;border:1px solid var(--line)}.row{display:grid;grid-template-columns:43% 57%;border-bottom:1px solid rgba(105,77,38,.38)}.row:last-child{border-bottom:0}.cell{padding:11px 10px}.cell:first-child{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#705a3c;border-right:1px solid rgba(105,77,38,.35)}.cell:last-child{font-weight:700}
+.question{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}.question p{text-align:center}
+button{width:100%;min-height:49px;margin-top:11px;padding:12px 15px;border:1px solid #59401f;background:linear-gradient(#ad8b51,#806033);color:#fff6df;font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 3px 0 #49341d,inset 0 1px rgba(255,255,255,.3)}button:active{transform:translateY(2px);box-shadow:0 1px 0 #49341d}
+.message{min-height:28px;margin-top:13px;text-align:center;color:#654b2f;font-style:italic}
+.evidence{margin:22px 0;padding:17px 14px;background:#35281b;color:#d8c69e;border:1px solid #a17c40;font-family:monospace;font-size:13px;line-height:1.85}.ok{color:#b7c99f}.warn{color:#dbad72}
+.error-code{text-align:center;font-family:monospace;font-size:13px;letter-spacing:1px;color:var(--red);margin:16px 0}
+.video-dossier{width:100%;max-width:520px;padding:8px;background:#8b6c3d;box-shadow:0 16px 45px #0009}.video-frame{background:#090807;border:1px solid #b28b4e;overflow:hidden}
+video{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#090807}
+.video-caption{padding:12px;text-align:center;background:#19130f;color:#d5c29b;font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;line-height:1.35}.video-caption button{width:auto;min-width:80%;font-size:14px}
+.reveal-title{text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:31px;font-weight:700;margin:20px 0 8px}
+.loader-wrap{margin:28px auto 22px;text-align:center}.loader-label{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;margin-bottom:12px}.progress{height:14px;padding:2px;border:1px solid #6d542f;background:#c7b38b}.progress-fill{width:0;height:100%;background:var(--gold);transition:width .12s linear}.percent{margin-top:8px;font-family:monospace;font-size:12px;color:#675136}
+.love-reveal{display:none;animation:fadeIn .9s ease both}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.love-title{text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:34px;line-height:1.05;margin:24px 0 17px}.fa{text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:700;line-height:1.15}
+.watermark{position:absolute;left:50%;top:57%;transform:translate(-50%,-50%) rotate(-17deg);color:rgba(181,91,126,.31);border:3px solid rgba(181,91,126,.31);padding:7px 14px;font-family:"Cormorant Garamond",Georgia,serif;font-size:31px;font-weight:700;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;pointer-events:none}
+@media(max-width:380px){body{padding:9px}.paper{padding:31px 16px 28px}h1{font-size:38px}h2{font-size:30px}.love-title{font-size:29px}.watermark{font-size:25px}}
+</style>
+</head>
+<body>
+
+<section id="reservation" class="screen"><div class="dossier"><div class="paper">
+<div class="kicker">The Sherlock Holmes Society · London</div>
+<h1>EXPEDIENTE<br>CONFIDENCIAL</h1><div class="subtitle">Registro de investigación · SH-081126</div><div class="rule">❧</div>
+<div class="file-stamp">CASO EN CURSO</div>
+<p class="center"><strong>Det. Leila Maya</strong></p>
+<p class="center">Se ha abierto un expediente a su nombre. Antes de autorizar el acceso al caso, deberán verificarse los datos registrados.</p>
+<div class="info">
+<div class="row"><div class="cell">Fecha</div><div class="cell">8 de noviembre de 2026</div></div>
+<div class="row"><div class="cell">Hora</div><div class="cell">18:00 hs</div></div>
+<div class="row"><div class="cell">Investigadores</div><div class="cell">Det. Leila Maya + 1</div></div>
+<div class="row"><div class="cell">Caso asignado</div><div class="cell">El misterioso caso de Lord Farena</div></div>
+</div>
+<div class="question"><h2>Verificación del expediente</h2>
+<p>Se requiere confirmar el lugar donde tuvo lugar <strong>el hurto</strong>.</p>
+<p>El expediente contiene información reservada sobre el caso. La respuesta correcta habilitará el acceso a la evidencia.</p>
+<button onclick="verifyTheft()">VERIFICAR LUGAR DEL HURTO</button><div id="message" class="message"></div></div>
+</div></div></section>
+
+<section id="videoScreen" class="screen hidden"><div class="video-dossier"><div class="video-frame">
+<video id="videoSH" playsinline preload="auto"><source src="SH-081126.mp4" type="video/mp4"></video>
+<div class="video-caption">Evidencia audiovisual · SH-081126<button onclick="finishFirstVideo()">CONTINUAR INVESTIGACIÓN</button></div>
+</div></div></section>
+
+<section id="errorScreen" class="screen hidden"><div class="dossier"><div class="paper">
+<div class="kicker">Departamento de Investigación</div><h2>VERIFICACIÓN DE UBICACIÓN</h2><div class="subtitle">Expediente SH-081126</div><div class="rule">❧</div>
+<div class="file-stamp">ANOMALÍA DETECTADA</div>
+<div class="evidence">
+<div>EXPEDIENTE ............. <span class="ok">CONFIRMADO</span></div>
+<div>FECHA .................. <span class="ok">COINCIDE</span></div>
+<div>INVESTIGADORES ......... <span class="ok">COINCIDEN</span></div>
+<div>UBICACIÓN .............. <span class="warn">NO VERIFICADA</span></div>
+</div>
+<p class="center">Algo no cuadra.</p><p class="center">Los registros del expediente no coinciden con la ubicación declarada originalmente.</p>
+<div class="error-code">ERROR 404 · DISCREPANCIA EN LA UBICACIÓN</div>
+<button onclick="showMexVideo()">RECUPERAR UBICACIÓN</button>
+</div></div></section>
+
+<section id="mexScreen" class="screen hidden"><div class="video-dossier"><div class="video-frame">
+<video id="videoMA" playsinline preload="auto"><source src="MA-081126.mp4" type="video/mp4"></video>
+<div class="video-caption">Evidencia recuperada · MA-081126<button onclick="finishMexVideo()">DESCUBRIR UBICACIÓN CENSURADA</button></div>
+</div></div></section>
+
+<section id="finalScreen" class="screen hidden"><div class="dossier"><div class="paper">
+<div class="kicker">Expediente resuelto</div><h2>ANÁLISIS COMPLETADO</h2><div class="rule">❧</div>
+<p class="center">Se ha detectado el verdadero destino de esta reserva.</p>
+<div class="evidence">
+<div class="row"><div class="cell">Ubicación</div><div class="cell ok">MOVISTAR ARENA ✓</div></div>
+<div class="row"><div class="cell">Fecha</div><div class="cell ok">08.11.2026 ✓</div></div>
+<div class="row"><div class="cell">Acompañante</div><div class="cell ok">PATO ✓</div></div>
+<div class="row"><div class="cell">Destinataria</div><div class="cell ok">LEI ✓</div></div>
+</div>
+<div class="reveal-title">ENTRADAS ENCONTRADAS</div><p class="center">La verdadera reserva ha sido recuperada satisfactoriamente.</p>
+<button onclick="showRecovery()">RECUPERAR ENTRADAS</button>
+</div></div></section>
+
+<section id="recoveryScreen" class="screen hidden"><div class="dossier"><div class="paper">
+<div class="watermark">Te amo!</div>
+<div class="kicker">Archivo recuperado · Caso cerrado</div><h2>RESERVA RECUPERADA</h2><div class="rule">❧</div>
+<div id="loader" class="loader-wrap"><div class="loader-label">Recuperando entradas...</div><div class="progress"><div id="progressFill" class="progress-fill"></div></div><div id="percent" class="percent">0%</div></div>
+<div id="loveReveal" class="love-reveal">
+<div class="love-title">¡NUESTRO PRIMER RECITAL JUNTOS AMOR 💖!</div>
+<div class="fa">Fiesta Fa!<br>08 de noviembre de 2026 · Movistar Arena</div>
+<div class="file-stamp">CASO CERRADO</div>
+<button onclick="openTickets()">VER MIS ENTRADAS</button>
+</div>
+</div></div></section>
+
+<script>
+const DRIVE_URL="https://drive.google.com/file/d/1pme6x9_8wEVx_93InIpiSmeTKwHPrz5_/view?usp=drive_link";
+function hideAll(){document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"))}
+function verifyTheft(){document.getElementById("message").textContent="✓ Lugar del hurto registrado. Recuperando evidencia...";setTimeout(showFirstVideo,850)}
+function showFirstVideo(){hideAll();const s=document.getElementById("videoScreen"),v=document.getElementById("videoSH");s.classList.remove("hidden");v.currentTime=0;v.play().catch(()=>{});v.onended=finishFirstVideo}
+function finishFirstVideo(){hideAll();document.getElementById("errorScreen").classList.remove("hidden")}
+function showMexVideo(){hideAll();const s=document.getElementById("mexScreen"),v=document.getElementById("videoMA");s.classList.remove("hidden");v.currentTime=0;v.play().catch(()=>{});v.onended=finishMexVideo}
+function finishMexVideo(){hideAll();document.getElementById("finalScreen").classList.remove("hidden")}
+function showRecovery(){
+ hideAll();document.getElementById("recoveryScreen").classList.remove("hidden");
+ const fill=document.getElementById("progressFill"),percent=document.getElementById("percent"),loader=document.getElementById("loader"),reveal=document.getElementById("loveReveal");
+ fill.style.width="0%";percent.textContent="0%";reveal.style.display="none";loader.style.display="block";
+ let value=0;const timer=setInterval(()=>{value+=2;fill.style.width=value+"%";percent.textContent=value+"%";if(value>=100){clearInterval(timer);setTimeout(()=>{loader.style.display="none";reveal.style.display="block"},650)}},38)
+}
+function openTickets(){window.location.href=DRIVE_URL}
+</script>
+</body>
+</html>
