@@ -430,6 +430,50 @@ button { font-size: 17px; }
   hyphens: auto;
 }
 
+
+/* ===== Corrección definitiva de justificación v7 ===== */
+
+/* Página 1: los dos párrafos descriptivos */
+#reservation p.center,
+#reservation .center p,
+#reservation > p,
+#reservation .subtitle ~ p {
+  text-align: justify !important;
+  text-align-last: left !important;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* No justificar mensajes/avisos auxiliares de la página 1 */
+#reservation .message {
+  text-align: center !important;
+}
+
+/* Página 4: los dos párrafos descriptivos */
+#mexScreen p.center,
+#mexScreen .center p,
+#mexScreen > p {
+  text-align: justify !important;
+  text-align-last: left !important;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* Mantener centrados elementos que no son los párrafos pedidos */
+#mexScreen .video-caption,
+#mexScreen button,
+#mexScreen .kicker,
+#mexScreen h2 {
+  text-align: center !important;
+}
+
+
+.justified-copy {
+  text-align: justify !important;
+  text-align-last: left !important;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 </style>
 </head>
 <body>
@@ -439,7 +483,7 @@ button { font-size: 17px; }
 <h1 class="confidential-title">EXPEDIENTE<br>CONFIDENCIAL</h1><div class="subtitle">Registro de investigación · SH-081126</div><div class="rule">❧</div>
 <div class="file-stamp">CASO EN CURSO</div>
 <p class="center"><strong>Det. Leila Maya</strong></p>
-<p class="center">Se ha abierto un expediente a su nombre. Antes de autorizar el acceso al caso, deberán verificarse los datos registrados.</p>
+<p class="justified-copy">Se ha abierto un expediente a su nombre. Antes de autorizar el acceso al caso, deberán verificarse los datos registrados.</p>
 <div class="info">
 <div class="row"><div class="cell">Fecha</div><div class="cell">8 de noviembre de 2026</div></div>
 <div class="row"><div class="cell">Hora</div><div class="cell">18:00 hs</div></div>
