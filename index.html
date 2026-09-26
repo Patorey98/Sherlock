@@ -559,6 +559,10 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Ajustes funcionales v12 ===== */
+#errorLoader { margin: 32px 0 24px; }
+#recoveryContent { display: none; }
 </style>
 </head>
 <body>
@@ -603,10 +607,16 @@ button { font-size: 17px; }
 
 <section id="videoScreen" class="screen hidden"><div class="video-dossier"><div class="video-frame">
 <video id="videoSH" playsinline preload="auto"><source src="SH-081126.mp4" type="video/mp4"></video>
-<div class="video-caption">Evidencia audiovisual · SH-081126<button onclick="finishFirstVideo()">CONTINUAR INVESTIGACIÓN</button></div>
+<div class="video-caption">Evidencia audiovisual · SH-081126</div>
 </div></div></section>
 
 <section id="errorScreen" class="screen hidden"><div class="dossier"><div class="paper">
+<div id="errorLoader" class="loader-wrap">
+  <div class="loader-label">Verificando expediente...</div>
+  <div class="progress"><div id="errorProgressFill" class="progress-fill"></div></div>
+  <div id="errorPercent" class="percent">0%</div>
+</div>
+<div id="errorContent" style="display:none;">
 <div class="kicker">THE SHERLOCK HOLMES SOCIETY · LONDON</div><h2>VERIFICACIÓN DE UBICACIÓN</h2><div class="subtitle">Expediente SH-081126</div><div class="rule">❧</div>
 <div class="file-stamp">ANOMALÍA DETECTADA</div>
 <div class="evidence location-evidence">
@@ -618,6 +628,7 @@ button { font-size: 17px; }
 <div class="error-code error-first">ERROR 404 · DISCREPANCIA EN LA UBICACIÓN</div>
 <p class="center">Los registros del expediente no coinciden con la ubicación declarada originalmente.</p>
 <button onclick="showMexVideo()">RASTREAR UBICACION</button>
+</div>
 </div></div></section>
 
 <section id="mexScreen" class="screen hidden"><div class="video-dossier"><div class="video-frame">
@@ -646,10 +657,11 @@ button { font-size: 17px; }
 </div></div></section>
 
 <section id="recoveryScreen" class="screen hidden"><div class="dossier"><div class="paper">
+<div id="loader" class="loader-wrap"><div class="loader-label">Recuperando entradas...</div><div class="progress"><div id="progressFill" class="progress-fill"></div></div><div id="percent" class="percent">0%</div></div>
+<div id="recoveryContent" style="display:none;">
 <div class="watermark love-watermark">Te amo!</div>
 <div class="kicker">Archivo recuperado · Caso cerrado</div><h2>RESERVA RECUPERADA</h2><div class="rule">❧</div>
-<div id="loader" class="loader-wrap"><div class="loader-label">Recuperando entradas...</div><div class="progress"><div id="progressFill" class="progress-fill"></div></div><div id="percent" class="percent">0%</div></div>
-<div id="loveReveal" class="love-reveal">
+<div id="loveReveal" class="love-reveal" style="display:block;">
 <div class="fa-event">
   <div class="ornament-title">Gran Fiesta Fa!</div>
   <div class="event-date">08 de noviembre de 2026 · Movistar Arena</div>
@@ -665,14 +677,40 @@ button { font-size: 17px; }
 </div>
 <div class="file-stamp">CASO CERRADO</div>
 </div>
+</div>
 </div></div></section>
 
 <script>
-const DRIVE_URL="https://drive.google.com/file/d/1pme6x9_8wEVx_93InIpiSmeTKwHPrz5_/view?usp=sharing";
+const TICKETS_URL="Entradas.pdf";
 function hideAll(){document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"))}
 function verifyTheft(){document.getElementById("message").textContent="✓ Lugar del hurto registrado. Recuperando evidencia...";setTimeout(showFirstVideo,850)}
 function showFirstVideo(){hideAll();const s=document.getElementById("videoScreen"),v=document.getElementById("videoSH");s.classList.remove("hidden");v.currentTime=0;v.play().catch(()=>{});v.onended=finishFirstVideo}
-function finishFirstVideo(){hideAll();document.getElementById("errorScreen").classList.remove("hidden")}
+function finishFirstVideo(){
+ hideAll();
+ const screen=document.getElementById("errorScreen");
+ const loader=document.getElementById("errorLoader");
+ const content=document.getElementById("errorContent");
+ const fill=document.getElementById("errorProgressFill");
+ const percent=document.getElementById("errorPercent");
+ screen.classList.remove("hidden");
+ loader.style.display="block";
+ content.style.display="none";
+ fill.style.width="0%";
+ percent.textContent="0%";
+ let value=0;
+ const timer=setInterval(()=>{
+   value+=2;
+   fill.style.width=value+"%";
+   percent.textContent=value+"%";
+   if(value>=100){
+     clearInterval(timer);
+     setTimeout(()=>{
+       loader.style.display="none";
+       content.style.display="block";
+     },650);
+   }
+ },38);
+}
 function showMexVideo(){hideAll();const s=document.getElementById("mexScreen"),v=document.getElementById("videoMA");s.classList.remove("hidden");v.currentTime=0;v.play().catch(()=>{});v.onended=finishMexVideo}
 function finishMexVideo(){
  hideAll();
@@ -703,12 +741,32 @@ function finishMexVideo(){
  },38);
 }
 function showRecovery(){
- hideAll();document.getElementById("recoveryScreen").classList.remove("hidden");
- const fill=document.getElementById("progressFill"),percent=document.getElementById("percent"),loader=document.getElementById("loader"),reveal=document.getElementById("loveReveal");
- fill.style.width="0%";percent.textContent="0%";reveal.style.display="none";loader.style.display="block";
- let value=0;const timer=setInterval(()=>{value+=2;fill.style.width=value+"%";percent.textContent=value+"%";if(value>=100){clearInterval(timer);setTimeout(()=>{loader.style.display="none";reveal.style.display="block"},650)}},38)
+ hideAll();
+ const screen=document.getElementById("recoveryScreen");
+ const fill=document.getElementById("progressFill");
+ const percent=document.getElementById("percent");
+ const loader=document.getElementById("loader");
+ const content=document.getElementById("recoveryContent");
+ screen.classList.remove("hidden");
+ fill.style.width="0%";
+ percent.textContent="0%";
+ loader.style.display="block";
+ content.style.display="none";
+ let value=0;
+ const timer=setInterval(()=>{
+   value+=2;
+   fill.style.width=value+"%";
+   percent.textContent=value+"%";
+   if(value>=100){
+     clearInterval(timer);
+     setTimeout(()=>{
+       loader.style.display="none";
+       content.style.display="block";
+     },650);
+   }
+ },38);
 }
-function openTickets(){window.location.href=DRIVE_URL}
+function openTickets(){window.location.href=TICKETS_URL}
 </script>
 </body>
 </html>
