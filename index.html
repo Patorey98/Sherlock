@@ -508,6 +508,57 @@ button { font-size: 17px; }
   font-weight: 700 !important;
 }
 
+
+/* ===== Ajustes v11 ===== */
+
+/* Página 1: justificar sin cortar palabras silábicamente */
+#reservation .justified-copy,
+#reservation .force-justify,
+#reservation p.center,
+#reservation .subtitle ~ p {
+  text-align: justify !important;
+  text-align-last: left !important;
+  text-justify: inter-word;
+  -webkit-hyphens: none !important;
+  hyphens: none !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* Kicker tipo página 1: una sola línea en páginas 3 y 5 */
+#errorScreen .kicker,
+#finalScreen .kicker {
+  white-space: nowrap !important;
+  font-size: clamp(9px, 2.75vw, 12.5px) !important;
+  letter-spacing: clamp(.35px, .45vw, 1.5px) !important;
+  line-height: 1.15 !important;
+}
+
+/* Página 6: encabezado superior completo en una sola línea */
+#recoveryScreen .kicker {
+  white-space: nowrap !important;
+  font-size: clamp(9px, 2.7vw, 12px) !important;
+  letter-spacing: clamp(.2px, .38vw, 1.25px) !important;
+  line-height: 1.15 !important;
+}
+
+/* Página 5: barra previa al análisis, visualmente igual a la página 6 */
+#analysisLoader {
+  margin: 32px 0 24px;
+}
+#analysisContent {
+  display: none;
+}
+
+@media(max-width:350px) {
+  #errorScreen .kicker,
+  #finalScreen .kicker,
+  #recoveryScreen .kicker {
+    font-size: 8.6px !important;
+    letter-spacing: .1px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -566,17 +617,23 @@ button { font-size: 17px; }
 </div>
 <div class="error-code error-first">ERROR 404 · DISCREPANCIA EN LA UBICACIÓN</div>
 <p class="center">Los registros del expediente no coinciden con la ubicación declarada originalmente.</p>
-<button onclick="showMexVideo()">RECUPERAR UBICACIÓN</button>
+<button onclick="showMexVideo()">RASTREAR UBICACION</button>
 </div></div></section>
 
 <section id="mexScreen" class="screen hidden"><div class="video-dossier"><div class="video-frame">
 <video id="videoMA" playsinline preload="auto"><source src="MA-081126.mp4" type="video/mp4"></video>
-<div class="video-caption">Evidencia recuperada · MA-081126<button onclick="finishMexVideo()">DESCUBRIR UBICACIÓN CENSURADA</button></div>
+<div class="video-caption">Evidencia recuperada · MA-081126</div>
 </div></div></section>
 
 <section id="finalScreen" class="screen hidden"><div class="dossier"><div class="paper">
+<div id="analysisLoader" class="loader-wrap">
+  <div class="loader-label">Analizando ubicación recuperada...</div>
+  <div class="progress"><div id="analysisProgressFill" class="progress-fill"></div></div>
+  <div id="analysisPercent" class="percent">0%</div>
+</div>
+<div id="analysisContent">
 <div class="kicker">THE SHERLOCK HOLMES SOCIETY · LONDON</div><h2>ANÁLISIS COMPLETO</h2><div class="rule">❧</div>
-<p class="force-justify">Se ha detectado el verdadero destino de esta reserva.</p>
+<p class="force-justify">Se ha detectado el verdadero destino de esta reserva:</p>
 <div class="evidence">
 <div class="row"><div class="cell">Ubicación</div><div class="cell ok">MOVISTAR ARENA ✓</div></div>
 <div class="row"><div class="cell">Fecha</div><div class="cell ok">08.11.2026 ✓</div></div>
@@ -585,6 +642,7 @@ button { font-size: 17px; }
 </div>
 <div class="reveal-title">ENTRADAS ENCONTRADAS</div><p class="force-justify">La verdadera reserva ha sido recuperada satisfactoriamente.</p>
 <button onclick="showRecovery()">RECUPERAR ENTRADAS</button>
+</div>
 </div></div></section>
 
 <section id="recoveryScreen" class="screen hidden"><div class="dossier"><div class="paper">
@@ -616,7 +674,34 @@ function verifyTheft(){document.getElementById("message").textContent="✓ Lugar
 function showFirstVideo(){hideAll();const s=document.getElementById("videoScreen"),v=document.getElementById("videoSH");s.classList.remove("hidden");v.currentTime=0;v.play().catch(()=>{});v.onended=finishFirstVideo}
 function finishFirstVideo(){hideAll();document.getElementById("errorScreen").classList.remove("hidden")}
 function showMexVideo(){hideAll();const s=document.getElementById("mexScreen"),v=document.getElementById("videoMA");s.classList.remove("hidden");v.currentTime=0;v.play().catch(()=>{});v.onended=finishMexVideo}
-function finishMexVideo(){hideAll();document.getElementById("finalScreen").classList.remove("hidden")}
+function finishMexVideo(){
+ hideAll();
+ const screen=document.getElementById("finalScreen");
+ const loader=document.getElementById("analysisLoader");
+ const content=document.getElementById("analysisContent");
+ const fill=document.getElementById("analysisProgressFill");
+ const percent=document.getElementById("analysisPercent");
+
+ screen.classList.remove("hidden");
+ loader.style.display="block";
+ content.style.display="none";
+ fill.style.width="0%";
+ percent.textContent="0%";
+
+ let value=0;
+ const timer=setInterval(()=>{
+   value+=2;
+   fill.style.width=value+"%";
+   percent.textContent=value+"%";
+   if(value>=100){
+     clearInterval(timer);
+     setTimeout(()=>{
+       loader.style.display="none";
+       content.style.display="block";
+     },650);
+   }
+ },38);
+}
 function showRecovery(){
  hideAll();document.getElementById("recoveryScreen").classList.remove("hidden");
  const fill=document.getElementById("progressFill"),percent=document.getElementById("percent"),loader=document.getElementById("loader"),reveal=document.getElementById("loveReveal");
