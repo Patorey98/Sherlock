@@ -1247,6 +1247,111 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Compactación de portada · v18 ===== */
+#coverScreen {
+  min-height: auto !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+.folder-cover {
+  min-height: auto !important;
+  padding: 8px !important;
+}
+
+.folder-inner {
+  min-height: auto !important;
+  padding: 22px 20px 16px !important;
+  justify-content: flex-start !important;
+}
+
+.folder-ornament-top {
+  margin-bottom: 8px !important;
+}
+
+.folder-rule {
+  margin: 8px auto 10px !important;
+}
+
+.folder-emblem {
+  margin: 12px 0 9px !important;
+}
+
+.folder-case-id {
+  margin-bottom: 8px !important;
+}
+
+.folder-title-block {
+  margin-bottom: 0 !important;
+}
+
+.folder-case-title {
+  margin-bottom: 0 !important;
+}
+
+.folder-status-stamp {
+  margin: 11px auto 5px !important;
+}
+
+.folder-access {
+  margin-top: 3px !important;
+}
+
+.folder-access-rule {
+  margin: 0 0 5px !important;
+}
+
+.folder-access .password-heading {
+  margin-bottom: 6px !important;
+}
+
+.password-inline {
+  margin-bottom: 0 !important;
+}
+
+.folder-access .password-message {
+  min-height: 34px !important;
+  margin-top: 7px !important;
+}
+
+.folder-ornament-bottom {
+  margin-top: 7px !important;
+}
+
+@media(max-width:540px) {
+  #coverScreen,
+  .folder-cover,
+  .folder-inner {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .folder-inner {
+    padding-top: 20px !important;
+    padding-bottom: 14px !important;
+  }
+}
+
+@media(max-width:380px) {
+  .folder-inner {
+    padding: 18px 14px 12px !important;
+  }
+
+  .folder-emblem {
+    margin-top: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .folder-status-stamp {
+    margin-top: 10px !important;
+  }
+
+  .folder-ornament-bottom {
+    margin-top: 6px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1270,14 +1375,13 @@ button { font-size: 17px; }
       <div class="folder-case-id">EXPEDIENTE SH-081126</div>
 
       <div class="folder-title-block">
-        <div class="folder-title-label">CASO ASIGNADO</div>
-        <h1 class="folder-case-title">
+                <h1 class="folder-case-title">
           <span>EL MISTERIOSO CASO</span>
           <span>DE LORD FARENA</span>
         </h1>
       </div>
 
-      <div class="folder-status-stamp">ACCESO RESTRINGIDO</div>
+      <div class="folder-status-stamp">CLASIFICACIÓN RESERVADA</div>
 
       <div class="folder-access password-panel">
         <div class="folder-access-rule"><span>❧</span></div>
@@ -1450,11 +1554,11 @@ function checkCasePassword(){
   message.classList.remove("success");
 
   const replies = [
-    "Código incorrecto. Sherlock ya detectó la falla al instante... y ahora te mira con una satisfacción insoportable.",
+    "Código incorrecto. Sherlock detectó la falla al instante...pero por supuesto, no pensó en avisar.",
     "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
     "Clave incorrecta. Moriarty diría que casi lo lograste, pero se está divirtiendo demasiado viéndote intentarlo.",
-    "No coincide. Mycroft suspira con elegancia, corrige el rumbo y vuelve a salvar el expediente una vez más.",
-    "Incorrecto otra vez. Elemental, mi querido Watson... aunque en este caso convendría observar las pistas con un poco más de ceremonia."
+    "No coincide. Mycroft ya parece decepcionado y bastante convencido de que le estás haciendo perder el tiempo.",
+    "Es algo elemental, mi querido Watson... la respuesta está a la vista; sólo falta observar las pistas con un poco más de atención."
   ];
 
   message.textContent = replies[(passwordAttempt - 1) % replies.length];
