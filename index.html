@@ -850,57 +850,383 @@ button { font-size: 17px; }
   .password-subheading { font-size: 13px; }
 }
 
+
+/* ===== Rediseño de carátula · v16 ===== */
+#coverScreen {
+  max-width: 540px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.folder-cover {
+  width: 100%;
+  min-height: calc(100vh - 20px);
+  padding: 9px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.035), transparent 20%, transparent 80%, rgba(0,0,0,.10)),
+    #332c22;
+  border: 1px solid #17140f;
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.58),
+    inset 0 0 0 1px rgba(201,174,117,.12);
+}
+
+.folder-inner {
+  min-height: calc(100vh - 40px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 31px 22px 25px;
+  border: 1px solid rgba(196,166,108,.54);
+  outline: 1px solid rgba(196,166,108,.18);
+  outline-offset: -7px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(196,166,108,.055), transparent 31%),
+    repeating-linear-gradient(92deg, rgba(255,255,255,.008) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, #342f27 0%, #2b2721 100%);
+  color: #d6c29a;
+}
+
+.folder-inner::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(211,182,122,.17);
+  pointer-events: none;
+}
+
+.folder-inner::after {
+  content: "SHS";
+  position: absolute;
+  left: 50%;
+  top: 37%;
+  transform: translate(-50%,-50%);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: min(45vw, 220px);
+  font-weight: 700;
+  letter-spacing: -.08em;
+  color: rgba(208,178,116,.025);
+  pointer-events: none;
+}
+
+.folder-ornament {
+  position: relative;
+  z-index: 2;
+  color: #9b8051;
+  font-size: 25px;
+  line-height: 1;
+}
+.folder-ornament-top { margin-bottom: 13px; }
+.folder-ornament-bottom { margin-top: 15px; transform: rotate(180deg); }
+
+.folder-society {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(9.2px, 2.7vw, 12.5px);
+  font-weight: 700;
+  letter-spacing: clamp(.5px, .65vw, 2px);
+  color: #cbb78d;
+  text-transform: uppercase;
+}
+
+.folder-rule {
+  width: min(330px, 82%);
+  height: 1px;
+  margin: 11px auto 15px;
+  background: linear-gradient(90deg, transparent, #a98d59 18%, #a98d59 82%, transparent);
+}
+
+.folder-classification {
+  position: relative;
+  z-index: 2;
+  padding: 4px 12px 3px;
+  border: 1px solid rgba(181,147,87,.55);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  color: #ac9365;
+}
+
+.folder-emblem {
+  position: relative;
+  z-index: 2;
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  margin: 20px 0 14px;
+  border: 1px solid rgba(187,154,94,.40);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 5px rgba(190,158,98,.03),
+    inset 0 0 0 7px rgba(190,158,98,.20);
+}
+.folder-emblem::before,
+.folder-emblem::after {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 1px;
+  background: #9f8353;
+}
+.folder-emblem::before { left: -11px; }
+.folder-emblem::after { right: -11px; }
+
+.folder-emblem-ring {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 31px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #c1a66f;
+}
+
+.folder-case-id {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 14px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(11px, 3.2vw, 13px);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #b59a67;
+  text-align: center;
+}
+
+.folder-title-block {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+}
+
+.folder-title-label {
+  margin-bottom: 7px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  color: #8f7b58;
+}
+
+.folder-case-title {
+  margin: 0 auto !important;
+  max-width: 100%;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(28px, 8.4vw, 42px) !important;
+  font-weight: 700 !important;
+  line-height: .95 !important;
+  letter-spacing: .01em !important;
+  color: #e0cc9f !important;
+  text-align: center !important;
+  text-transform: uppercase;
+}
+.folder-case-title span {
+  display: block;
+  white-space: nowrap;
+}
+
+.folder-status-stamp {
+  position: relative;
+  z-index: 2;
+  margin: 18px auto 13px;
+  padding: 6px 12px 5px;
+  border: 2px solid rgba(151,72,62,.68);
+  color: rgba(190,100,87,.82);
+  transform: rotate(-2.2deg);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+/* Acceso integrado en la propia tapa */
+.folder-access {
+  position: relative;
+  z-index: 2;
+  width: min(390px, 100%);
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.folder-access-rule {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 10px;
+  color: #92794e;
+}
+.folder-access-rule::before,
+.folder-access-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(180,148,87,.65));
+}
+.folder-access-rule::after {
+  background: linear-gradient(90deg, rgba(180,148,87,.65), transparent);
+}
+.folder-access-rule span {
+  font-size: 17px;
+}
+
+.folder-access .password-heading {
+  color: #cbb58b;
+  font-size: clamp(17px, 4.8vw, 21px);
+  letter-spacing: 1.25px;
+}
+
+.folder-access .password-subheading {
+  margin: 2px auto 9px;
+  color: #8f8066;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  letter-spacing: .45px;
+}
+
+.password-inline {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 88px;
+  gap: 8px;
+  width: min(300px, 92%);
+  margin: 0 auto;
+}
+
+.folder-access .password-input {
+  width: 100%;
+  height: 42px;
+  margin: 0;
+  padding: 5px 7px 4px;
+  border: 1px solid rgba(180,148,87,.58);
+  background: rgba(7,7,6,.22);
+  color: #e5d1a5;
+  box-shadow: inset 0 1px 7px rgba(0,0,0,.28);
+  font-size: 21px;
+  letter-spacing: 6px;
+}
+.folder-access .password-input:focus {
+  border-color: #c0a267;
+  box-shadow: 0 0 0 2px rgba(179,145,82,.10), inset 0 1px 7px rgba(0,0,0,.28);
+}
+.folder-access .password-input::placeholder {
+  color: rgba(213,188,139,.25);
+}
+
+.folder-access .access-button {
+  width: 88px;
+  height: 42px;
+  margin: 0;
+  padding: 0 7px;
+  border-color: rgba(187,153,91,.70);
+  background: rgba(149,116,60,.13);
+  color: #d6bd89;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  letter-spacing: .8px;
+}
+
+.folder-access .password-message {
+  min-height: 34px;
+  margin: 8px auto 0;
+  color: #c98478;
+  font-size: 12.5px;
+  line-height: 1.28;
+  font-style: italic;
+}
+.folder-access .password-message.success {
+  color: #a6b88e;
+}
+
+@media(max-width:380px) {
+  .folder-inner {
+    padding: 25px 15px 20px;
+  }
+  .folder-emblem {
+    width: 72px;
+    height: 72px;
+    margin-top: 16px;
+  }
+  .folder-emblem-ring { font-size: 27px; }
+  .folder-case-title {
+    font-size: clamp(25px, 7.9vw, 35px) !important;
+  }
+  .folder-status-stamp {
+    margin-top: 14px;
+    margin-bottom: 10px;
+  }
+  .password-inline {
+    width: min(284px, 95%);
+    grid-template-columns: minmax(0,1fr) 80px;
+  }
+  .folder-access .access-button { width: 80px; }
+}
+
 </style>
 </head>
 <body>
 
 
+
 <section id="coverScreen" class="screen">
-  <div class="case-cover">
-    <div class="cover-paper">
-      <div class="cover-corner cover-corner-tl">❦</div>
-      <div class="cover-corner cover-corner-br">❦</div>
+  <div class="folder-cover">
+    <div class="folder-inner">
 
-      <div class="cover-society">THE SHERLOCK HOLMES SOCIETY · LONDON</div>
+      <div class="folder-ornament folder-ornament-top">❦</div>
 
-      <div class="cover-file-tab">ARCHIVO DE INVESTIGACIÓN</div>
+      <div class="folder-society">THE SHERLOCK HOLMES SOCIETY · LONDON</div>
+      <div class="folder-rule"></div>
 
-      <div class="cover-case-number">
-        <span>EXPEDIENTE</span>
-        <strong>SH-081126</strong>
+      <div class="folder-classification">ARCHIVO CONFIDENCIAL</div>
+
+      <div class="folder-emblem" aria-hidden="true">
+        <div class="folder-emblem-ring">SH</div>
       </div>
 
-      <div class="cover-title-wrap">
-        <div class="cover-small-label">CASO ASIGNADO</div>
-        <h1 class="cover-case-title">EL MISTERIOSO CASO<br>DE LORD FARENA</h1>
+      <div class="folder-case-id">EXPEDIENTE SH-081126</div>
+
+      <div class="folder-title-block">
+        <div class="folder-title-label">CASO ASIGNADO</div>
+        <h1 class="folder-case-title">
+          <span>EL MISTERIOSO CASO</span>
+          <span>DE LORD FARENA</span>
+        </h1>
       </div>
 
-      <div class="cover-stamp">ACCESO<br>RESTRINGIDO</div>
+      <div class="folder-status-stamp">ACCESO RESTRINGIDO</div>
 
-      <div class="cover-note cover-note-one">DOCUMENTACIÓN CONFIDENCIAL</div>
-      <div class="cover-note cover-note-two">NO ARCHIVAR SIN AUTORIZACIÓN</div>
+      <div class="folder-access password-panel">
+        <div class="folder-access-rule"><span>❧</span></div>
+        <div class="password-heading">ACCESO AL EXPEDIENTE</div>
+        <div class="password-subheading">Código de autorización · 6 dígitos</div>
 
-      <div class="cover-divider"><span>❧</span></div>
+        <div class="password-inline">
+          <input
+            id="casePassword"
+            class="password-input"
+            type="password"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="6"
+            autocomplete="off"
+            aria-label="Código de acceso"
+            placeholder="••••••"
+          >
+          <button id="accessButton" class="access-button" onclick="checkCasePassword()">ABRIR</button>
+        </div>
 
-      <div class="password-panel">
-        <div class="password-heading">CÓDIGO DE ACCESO</div>
-        <div class="password-subheading">Ingrese la clave de seis dígitos para abrir el expediente.</div>
-
-        <input
-          id="casePassword"
-          class="password-input"
-          type="password"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          maxlength="6"
-          autocomplete="off"
-          aria-label="Código de acceso"
-          placeholder="••••••"
-        >
-
-        <button id="accessButton" class="access-button" onclick="checkCasePassword()">ABRIR EXPEDIENTE</button>
         <div id="passwordMessage" class="password-message" aria-live="polite"></div>
       </div>
+
+      <div class="folder-ornament folder-ornament-bottom">❦</div>
     </div>
   </div>
 </section>
@@ -1049,11 +1375,11 @@ function checkCasePassword(){
   message.classList.remove("success");
 
   const replies = [
-    "Código incorrecto. Holmes levantó una ceja. Eso nunca es buena señal.",
+    "Código incorrecto. Sherlock ya lo había deducido. Por supuesto, no pensó en avisar.",
     "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
-    "Clave incorrecta. Moriarty estaría disfrutando demasiado de este momento.",
-    "No coincide. El expediente permanece más cerrado que la agenda de Mycroft.",
-    "Incorrecto otra vez. Sherlock recomienda observar los pequeños detalles."
+    "Clave incorrecta. Moriarty sonríe como si esto también formara parte del plan.",
+    "No coincide. Mycroft dice que era obvio. Lo dice como si eso ayudara.",
+    "Incorrecto otra vez. Sherlock recomienda mirar mejor las pistas... y trata de no parecer demasiado satisfecho."
   ];
 
   message.textContent = replies[(passwordAttempt - 1) % replies.length];
