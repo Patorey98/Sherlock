@@ -567,7 +567,7 @@ button { font-size: 17px; }
 /* ===== Ajustes v14 ===== */
 .reveal-question {
   font-family: Gabriola, "Segoe Script", "Brush Script MT", cursive !important;
-  font-size: clamp(27px, 7.5vw, 34px) !important;
+  font-size: clamp(29px, 8.1vw, 37px) !important;
   font-weight: 400 !important;
   line-height: 1.02 !important;
   letter-spacing: 0 !important;
@@ -575,11 +575,337 @@ button { font-size: 17px; }
   margin: 16px auto 20px !important;
 }
 
+
+/* ===== Carátula inicial del expediente · v15 ===== */
+.case-cover {
+  width: 100%;
+  padding: 8px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.06), transparent 18%, transparent 82%, rgba(0,0,0,.08)),
+    #765735;
+  box-shadow: 0 17px 48px #000a;
+  transform: rotate(-.25deg);
+}
+
+.cover-paper {
+  min-height: calc(100vh - 44px);
+  position: relative;
+  overflow: hidden;
+  padding: 42px 22px 34px;
+  background:
+    radial-gradient(circle at 14% 17%, rgba(95,63,25,.10), transparent 18%),
+    radial-gradient(circle at 85% 76%, rgba(95,63,25,.08), transparent 21%),
+    repeating-linear-gradient(0deg, rgba(70,48,22,.022) 0 1px, transparent 1px 5px),
+    #d9c79f;
+  border: 1px solid #594229;
+  box-shadow: inset 0 0 62px rgba(69,45,20,.24);
+}
+
+.cover-paper::before {
+  content: "";
+  position: absolute;
+  inset: 11px;
+  border: 1px solid rgba(91,65,34,.56);
+  pointer-events: none;
+}
+
+.cover-paper::after {
+  content: "";
+  position: absolute;
+  width: 118px;
+  height: 20px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  border: 1px solid rgba(82,60,35,.28);
+  background: rgba(224,207,170,.76);
+  box-shadow: 0 2px 5px rgba(49,34,20,.14);
+  pointer-events: none;
+}
+
+.cover-corner {
+  position: absolute;
+  color: rgba(120,87,43,.72);
+  font-size: 24px;
+  z-index: 1;
+}
+.cover-corner-tl { left: 18px; top: 14px; transform: rotate(-18deg); }
+.cover-corner-br { right: 18px; bottom: 14px; transform: rotate(162deg); }
+
+.cover-society {
+  position: relative;
+  z-index: 2;
+  margin: 3px auto 28px;
+  text-align: center;
+  white-space: nowrap;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(9px, 2.8vw, 13px);
+  font-weight: 700;
+  letter-spacing: clamp(.4px, .48vw, 1.8px);
+  color: #4c3824;
+  text-transform: uppercase;
+}
+
+.cover-file-tab {
+  width: max-content;
+  max-width: 82%;
+  margin: 0 0 15px 4px;
+  padding: 7px 12px 5px;
+  border: 1px solid #80633d;
+  background: rgba(126,95,51,.09);
+  color: #564027;
+  transform: rotate(-2.1deg);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(10px, 3vw, 12px);
+  font-weight: 700;
+  letter-spacing: .65px;
+}
+
+.cover-case-number {
+  display: inline-grid;
+  gap: 2px;
+  margin: 5px 0 23px 7px;
+  padding: 8px 13px 7px;
+  border-top: 1px solid #8e7048;
+  border-bottom: 1px solid #8e7048;
+  transform: rotate(1.1deg);
+  font-family: "Courier New", Courier, monospace;
+}
+.cover-case-number span {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #6b5436;
+}
+.cover-case-number strong {
+  font-size: clamp(21px, 6.3vw, 28px);
+  letter-spacing: 2px;
+  color: #2e241a;
+}
+
+.cover-title-wrap {
+  position: relative;
+  z-index: 2;
+  margin: 7px auto 22px;
+  padding: 18px 12px 16px;
+  border-top: 2px solid rgba(83,60,31,.78);
+  border-bottom: 2px solid rgba(83,60,31,.78);
+  transform: rotate(-.85deg);
+  text-align: center;
+}
+.cover-small-label {
+  margin-bottom: 7px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #715739;
+}
+.cover-case-title {
+  margin: 0 !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(31px, 9vw, 44px) !important;
+  line-height: .96 !important;
+  letter-spacing: .015em;
+  color: #2d2118;
+  text-align: center;
+}
+
+.cover-stamp {
+  width: max-content;
+  margin: -1px 8px 4px auto;
+  padding: 8px 14px 7px;
+  border: 3px double rgba(118,47,44,.82);
+  color: rgba(118,47,44,.88);
+  transform: rotate(6deg);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(13px, 3.9vw, 16px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: 1.2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cover-note {
+  width: max-content;
+  max-width: 90%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(9.5px, 2.75vw, 11.5px);
+  font-weight: 700;
+  letter-spacing: .55px;
+  color: #665035;
+}
+.cover-note-one {
+  margin: 12px 0 3px 5px;
+  transform: rotate(-1.7deg);
+}
+.cover-note-two {
+  margin: 4px 3px 2px auto;
+  transform: rotate(1.6deg);
+}
+
+.cover-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 16px;
+  color: #95713d;
+}
+.cover-divider::before,
+.cover-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #8e7048;
+}
+.cover-divider span { font-size: 21px; }
+
+.password-panel {
+  position: relative;
+  z-index: 2;
+  margin-top: 8px;
+  padding: 17px 13px 14px;
+  border: 1px solid rgba(91,67,37,.65);
+  background: rgba(239,225,193,.32);
+}
+.password-heading {
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(20px, 5.7vw, 25px);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #3d2e20;
+}
+.password-subheading {
+  margin: 5px auto 13px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #6a5438;
+}
+
+.password-input {
+  display: block;
+  width: min(260px, 88%);
+  height: 49px;
+  margin: 0 auto;
+  padding: 7px 12px 5px;
+  border: 1px solid #684f30;
+  border-radius: 0;
+  outline: none;
+  background: rgba(244,232,205,.72);
+  box-shadow: inset 0 1px 7px rgba(76,53,28,.13);
+  color: #302218;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 8px;
+}
+.password-input:focus {
+  border-color: #8f6b34;
+  box-shadow: 0 0 0 2px rgba(154,120,63,.18), inset 0 1px 7px rgba(76,53,28,.13);
+}
+.password-input::placeholder {
+  color: rgba(79,59,36,.35);
+  letter-spacing: 5px;
+}
+
+.access-button {
+  width: min(310px, 100%);
+  display: block;
+  margin: 13px auto 0;
+}
+
+.password-message {
+  min-height: 39px;
+  margin: 11px auto 0;
+  padding: 0 4px;
+  text-align: center;
+  color: #713733;
+  font-size: 14px;
+  line-height: 1.35;
+  font-style: italic;
+}
+
+.password-message.success {
+  color: #4d613e;
+  font-weight: 700;
+}
+
+.cover-shake {
+  animation: coverShake .36s ease;
+}
+@keyframes coverShake {
+  0%,100% { transform: translateX(0); }
+  22% { transform: translateX(-7px) rotate(-.4deg); }
+  45% { transform: translateX(6px) rotate(.35deg); }
+  70% { transform: translateX(-4px) rotate(-.2deg); }
+}
+
+@media(max-width:380px) {
+  .cover-paper { padding: 36px 15px 26px; }
+  .cover-society { font-size: 8.8px; letter-spacing: .2px; }
+  .cover-title-wrap { padding-left: 7px; padding-right: 7px; }
+  .password-subheading { font-size: 13px; }
+}
+
 </style>
 </head>
 <body>
 
-<section id="reservation" class="screen"><div class="dossier"><div class="paper">
+
+<section id="coverScreen" class="screen">
+  <div class="case-cover">
+    <div class="cover-paper">
+      <div class="cover-corner cover-corner-tl">❦</div>
+      <div class="cover-corner cover-corner-br">❦</div>
+
+      <div class="cover-society">THE SHERLOCK HOLMES SOCIETY · LONDON</div>
+
+      <div class="cover-file-tab">ARCHIVO DE INVESTIGACIÓN</div>
+
+      <div class="cover-case-number">
+        <span>EXPEDIENTE</span>
+        <strong>SH-081126</strong>
+      </div>
+
+      <div class="cover-title-wrap">
+        <div class="cover-small-label">CASO ASIGNADO</div>
+        <h1 class="cover-case-title">EL MISTERIOSO CASO<br>DE LORD FARENA</h1>
+      </div>
+
+      <div class="cover-stamp">ACCESO<br>RESTRINGIDO</div>
+
+      <div class="cover-note cover-note-one">DOCUMENTACIÓN CONFIDENCIAL</div>
+      <div class="cover-note cover-note-two">NO ARCHIVAR SIN AUTORIZACIÓN</div>
+
+      <div class="cover-divider"><span>❧</span></div>
+
+      <div class="password-panel">
+        <div class="password-heading">CÓDIGO DE ACCESO</div>
+        <div class="password-subheading">Ingrese la clave de seis dígitos para abrir el expediente.</div>
+
+        <input
+          id="casePassword"
+          class="password-input"
+          type="password"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="6"
+          autocomplete="off"
+          aria-label="Código de acceso"
+          placeholder="••••••"
+        >
+
+        <button id="accessButton" class="access-button" onclick="checkCasePassword()">ABRIR EXPEDIENTE</button>
+        <div id="passwordMessage" class="password-message" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reservation" class="screen hidden"><div class="dossier"><div class="paper">
 <div class="kicker">The Sherlock Holmes Society · London</div>
 <h1 class="confidential-title">EXPEDIENTE<br>CONFIDENCIAL</h1><div class="subtitle">Registro de investigación · SH-081126</div><div class="rule">❧</div>
 <div class="file-stamp">CASO EN CURSO</div>
@@ -678,7 +1004,7 @@ button { font-size: 17px; }
   <div class="ornament-title">Gran Fiesta Fa!</div>
   <div class="event-date">08 de noviembre de 2026 · Movistar Arena</div>
 </div>
-<div class="love-title reveal-question">Amor, ¿querés acompañarme a nuestro primer recital juntos 💖?</div>
+<div class="love-title reveal-question">Amor, ¿Querés acompañarme a nuestro primer recital juntos 💖?</div>
 
 <div class="answer-buttons">
   <button onclick="openTickets()">SI</button>
@@ -693,8 +1019,68 @@ button { font-size: 17px; }
 </div></div></section>
 
 <script>
-const TEST_MODE = false; // true = saltea videos para testear / false = reproducción normal
+const TEST_MODE = true; // true = saltea videos para testear / false = reproducción normal
 const TICKETS_URL = "Entradas.pdf";
+
+let passwordAttempt = 0;
+
+function checkCasePassword(){
+  const input = document.getElementById("casePassword");
+  const message = document.getElementById("passwordMessage");
+  const panel = document.querySelector("#coverScreen .password-panel");
+  const button = document.getElementById("accessButton");
+  const code = input.value.trim();
+
+  if(code === "621081"){
+    message.classList.add("success");
+    message.textContent = "✓ Código verificado. Desclasificando expediente...";
+    button.disabled = true;
+    input.disabled = true;
+
+    setTimeout(() => {
+      hideAll();
+      document.getElementById("reservation").classList.remove("hidden");
+      window.scrollTo(0, 0);
+    }, 700);
+    return;
+  }
+
+  passwordAttempt += 1;
+  message.classList.remove("success");
+
+  const replies = [
+    "Código incorrecto. Holmes levantó una ceja. Eso nunca es buena señal.",
+    "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
+    "Clave incorrecta. Moriarty estaría disfrutando demasiado de este momento.",
+    "No coincide. El expediente permanece más cerrado que la agenda de Mycroft.",
+    "Incorrecto otra vez. Sherlock recomienda observar los pequeños detalles."
+  ];
+
+  message.textContent = replies[(passwordAttempt - 1) % replies.length];
+  input.value = "";
+  input.focus();
+
+  panel.classList.remove("cover-shake");
+  void panel.offsetWidth;
+  panel.classList.add("cover-shake");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("casePassword");
+  if(input){
+    input.addEventListener("keydown", (event) => {
+      if(event.key === "Enter"){
+        event.preventDefault();
+        checkCasePassword();
+      }
+    });
+
+    input.addEventListener("input", () => {
+      input.value = input.value.replace(/\D/g, "").slice(0, 6);
+    });
+  }
+});
+
 
 function hideAll(){
   document.querySelectorAll(".screen").forEach(s => s.classList.add("hidden"));
