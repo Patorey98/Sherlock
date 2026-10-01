@@ -1170,6 +1170,83 @@ button { font-size: 17px; }
   .folder-access .access-button { width: 80px; }
 }
 
+
+/* ===== Ajustes finos de portada · v17 ===== */
+
+/* Título mejor contenido dentro de los márgenes del celular */
+.folder-case-title {
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(23px, 7.1vw, 35px) !important;
+  line-height: .98 !important;
+  letter-spacing: 0 !important;
+}
+.folder-case-title span {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* Quedarse solo con ACCESO RESTRINGIDO y hacerlo más presente */
+.folder-status-stamp {
+  margin: 16px auto 8px !important;
+  padding: 8px 15px 7px !important;
+  font-size: 13px !important;
+  letter-spacing: 1.7px !important;
+  border-width: 2px !important;
+}
+
+/* Acercar la zona de acceso a la zona de carátula */
+.folder-access {
+  margin-top: 6px !important;
+}
+.folder-access-rule {
+  margin: 0 0 7px !important;
+}
+
+/* Igualar visualmente input y botón */
+.password-inline {
+  align-items: stretch;
+}
+.folder-access .password-input,
+.folder-access .access-button {
+  height: 44px !important;
+  min-height: 44px !important;
+  box-sizing: border-box !important;
+}
+.folder-access .access-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+
+/* Sin subtítulo; mantener lectura más compacta */
+.folder-access .password-heading {
+  margin-bottom: 8px;
+}
+.folder-access .password-message {
+  min-height: 42px;
+  margin-top: 10px;
+  font-size: 14.5px !important;
+  line-height: 1.33 !important;
+  padding: 0 3px;
+}
+
+@media(max-width:380px) {
+  .folder-case-title {
+    font-size: clamp(21px, 6.7vw, 30px) !important;
+  }
+  .folder-status-stamp {
+    font-size: 12px !important;
+    letter-spacing: 1.4px !important;
+  }
+  .folder-access .password-message {
+    font-size: 13.5px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1185,8 +1262,7 @@ button { font-size: 17px; }
       <div class="folder-society">THE SHERLOCK HOLMES SOCIETY · LONDON</div>
       <div class="folder-rule"></div>
 
-      <div class="folder-classification">ARCHIVO CONFIDENCIAL</div>
-
+      
       <div class="folder-emblem" aria-hidden="true">
         <div class="folder-emblem-ring">SH</div>
       </div>
@@ -1206,8 +1282,7 @@ button { font-size: 17px; }
       <div class="folder-access password-panel">
         <div class="folder-access-rule"><span>❧</span></div>
         <div class="password-heading">ACCESO AL EXPEDIENTE</div>
-        <div class="password-subheading">Código de autorización · 6 dígitos</div>
-
+        
         <div class="password-inline">
           <input
             id="casePassword"
@@ -1375,11 +1450,11 @@ function checkCasePassword(){
   message.classList.remove("success");
 
   const replies = [
-    "Código incorrecto. Sherlock ya lo había deducido. Por supuesto, no pensó en avisar.",
+    "Código incorrecto. Sherlock ya detectó la falla al instante... y ahora te mira con una satisfacción insoportable.",
     "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
-    "Clave incorrecta. Moriarty sonríe como si esto también formara parte del plan.",
-    "No coincide. Mycroft dice que era obvio. Lo dice como si eso ayudara.",
-    "Incorrecto otra vez. Sherlock recomienda mirar mejor las pistas... y trata de no parecer demasiado satisfecho."
+    "Clave incorrecta. Moriarty diría que casi lo lograste, pero se está divirtiendo demasiado viéndote intentarlo.",
+    "No coincide. Mycroft suspira con elegancia, corrige el rumbo y vuelve a salvar el expediente una vez más.",
+    "Incorrecto otra vez. Elemental, mi querido Watson... aunque en este caso convendría observar las pistas con un poco más de ceremonia."
   ];
 
   message.textContent = replies[(passwordAttempt - 1) % replies.length];
