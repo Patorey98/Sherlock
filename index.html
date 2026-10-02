@@ -1826,6 +1826,113 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Ajustes páginas 2, 4, 6 y 7 · v24 ===== */
+
+/* PÁGINA 2 — hoja más compacta tras quitar información */
+#reservation .paper {
+  min-height: auto !important;
+  padding-top: 34px !important;
+  padding-bottom: 27px !important;
+}
+
+/* Un poco más de aire entre CASO EN CURSO y el texto siguiente */
+#reservation .file-stamp {
+  margin-bottom: 21px !important;
+}
+#reservation .reservation-salutation {
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Tabla: primera columna en negrita y centrada verticalmente */
+#reservation .info .cell:first-child,
+#finalScreen .evidence .cell:first-child {
+  display: flex !important;
+  align-items: center !important;
+  font-weight: 700 !important;
+}
+
+/* Acercar la identificación a la tabla después de eliminar el encabezado/párrafo */
+#reservation .info {
+  margin-bottom: 10px !important;
+}
+#reservation .question {
+  margin-top: 8px !important;
+  padding-top: 10px !important;
+}
+#reservation .question .force-justify {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+/* Huella: requiere mantener presionado */
+#fingerprintButton {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition:
+    transform 1.8s ease,
+    box-shadow 1.8s ease,
+    filter 1.8s ease;
+}
+#fingerprintButton.holding {
+  transform: scale(.94);
+  filter: brightness(1.12);
+  box-shadow:
+    0 2px 0 #49341d,
+    0 0 0 7px rgba(154,120,63,.25),
+    inset 0 0 24px rgba(255,244,214,.26);
+}
+#fingerprintButton.verified {
+  transform: scale(.96);
+  filter: brightness(1.17);
+  box-shadow:
+    0 2px 0 #49341d,
+    0 0 0 8px rgba(92,117,71,.24),
+    inset 0 0 24px rgba(255,244,214,.28);
+}
+
+/* PÁGINAS 4, 6 y 7 — barra de carga realmente centrada en toda la hoja */
+#errorLoader,
+#analysisLoader,
+#recoveryScreen #loader {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 5 !important;
+  margin: 0 !important;
+  padding: 34px 22px !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  text-align: center !important;
+  background: transparent !important;
+}
+
+/* La tabla de la página 6 mantiene también la primera columna más legible */
+#finalScreen .evidence .cell:first-child {
+  font-size: 12px !important;
+  letter-spacing: .35px !important;
+}
+
+/* PÁGINA 7 — se eliminó el sello "Te amo!" */
+#recoveryScreen .love-watermark {
+  display: none !important;
+}
+
+@media(max-width:380px) {
+  #reservation .paper {
+    padding-top: 29px !important;
+    padding-bottom: 23px !important;
+  }
+
+  #errorLoader,
+  #analysisLoader,
+  #recoveryScreen #loader {
+    padding: 29px 16px 26px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1888,7 +1995,7 @@ button { font-size: 17px; }
 <div class="kicker">The Sherlock Holmes Society · London</div>
 <h1 class="confidential-title">EXPEDIENTE<br>CONFIDENCIAL</h1><div class="subtitle">Registro de investigación · SH-081126</div><div class="rule">❧</div>
 <div class="file-stamp">CASO EN CURSO</div>
-<p class="center"><strong>Atte. Det. Leila Maya</strong></p>
+<p class="center reservation-salutation"><strong><u>Estimada Det. Leila Maya:</u></strong></p>
 <p class="justified-copy">Se ha abierto un expediente a su nombre. Antes de autorizar el acceso al caso, deberán verificarse los datos registrados.</p>
 <div class="info">
 <div class="row"><div class="cell">Fecha</div><div class="cell">8 de noviembre de 2026</div></div>
@@ -1896,10 +2003,9 @@ button { font-size: 17px; }
 <div class="row"><div class="cell">Investigadores</div><div class="cell">Det. Leila Maya + 1</div></div>
 <div class="row"><div class="cell">Caso asignado</div><div class="cell">El misterioso caso de Lord Farena</div></div>
 </div>
-<div class="question"><h2>Verificación del expediente</h2>
-<p class="force-justify">Se requiere confirmar el lugar donde tuvo lugar <strong>el hurto</strong>.</p>
-<p class="force-justify">El expediente contiene información confidencial sobre el caso. Deberá identificarse con su huella dactilar para acceder a la evidencia.</p>
-<button class="fingerprint-button" onclick="verifyTheft()" aria-label="Identificarse con huella dactilar">
+<div class="question">
+<p class="force-justify">El expediente contiene información confidencial sobre <strong>el hurto y su ubicación</strong>. Deberá identificarse con su huella dactilar para acceder a la evidencia.</p>
+<button id="fingerprintButton" class="fingerprint-button" aria-label="Mantener presionado para identificarse con huella dactilar">
 <svg viewBox="0 0 64 64" aria-hidden="true">
   <path d="M10 30c0-12.2 9.8-22 22-22s22 9.8 22 22"/>
   <path d="M14.5 31c0-9.9 7.8-18 17.5-18s17.5 8.1 17.5 18"/>
@@ -1918,7 +2024,7 @@ button { font-size: 17px; }
   <path d="M54 35c0 4.4.8 8 .7 11"/>
 </svg>
 </button>
-<div class="fingerprint-caption">IDENTIFICAR CON HUELLA</div>
+<div id="fingerprintCaption" class="fingerprint-caption">MANTENER PRESIONADO</div>
 <div id="message" class="message"></div></div>
 </div></div></section>
 
@@ -1976,7 +2082,6 @@ button { font-size: 17px; }
 <section id="recoveryScreen" class="screen hidden"><div class="dossier"><div class="paper">
 <div id="loader" class="loader-wrap"><div class="loader-label">Recuperando entradas...</div><div class="progress"><div id="progressFill" class="progress-fill"></div></div><div id="percent" class="percent">0%</div></div>
 <div id="recoveryContent" style="display:none;">
-<div class="watermark love-watermark">Te amo!</div>
 <div class="kicker">Archivo recuperado · Caso cerrado</div><h2>RESERVA RECUPERADA</h2><div class="rule">❧</div>
 <div id="loveReveal" class="love-reveal" style="display:block;">
 <div class="fa-event">
@@ -2067,9 +2172,59 @@ function hideAll(){
 
 function verifyTheft(){
   document.getElementById("message").textContent =
-    "✓ Lugar del hurto registrado. Recuperando evidencia...";
-  setTimeout(showFirstVideo, 850);
+    "✓ Huella verificada. Recuperando evidencia...";
+  setTimeout(showFirstVideo, 700);
 }
+
+let fingerprintHoldTimer = null;
+let fingerprintVerified = false;
+
+function startFingerprintHold(event){
+  if(fingerprintVerified) return;
+  if(event) event.preventDefault();
+
+  const button = document.getElementById("fingerprintButton");
+  const caption = document.getElementById("fingerprintCaption");
+  const message = document.getElementById("message");
+
+  clearTimeout(fingerprintHoldTimer);
+  button.classList.add("holding");
+  caption.textContent = "VERIFICANDO HUELLA...";
+  message.textContent = "";
+
+  fingerprintHoldTimer = setTimeout(() => {
+    fingerprintVerified = true;
+    button.classList.remove("holding");
+    button.classList.add("verified");
+    caption.textContent = "HUELLA VERIFICADA";
+    verifyTheft();
+  }, 1800);
+}
+
+function cancelFingerprintHold(){
+  if(fingerprintVerified) return;
+
+  clearTimeout(fingerprintHoldTimer);
+  fingerprintHoldTimer = null;
+
+  const button = document.getElementById("fingerprintButton");
+  const caption = document.getElementById("fingerprintCaption");
+
+  if(button) button.classList.remove("holding");
+  if(caption) caption.textContent = "MANTENER PRESIONADO";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fingerprintButton = document.getElementById("fingerprintButton");
+
+  if(fingerprintButton){
+    fingerprintButton.addEventListener("pointerdown", startFingerprintHold);
+    fingerprintButton.addEventListener("pointerup", cancelFingerprintHold);
+    fingerprintButton.addEventListener("pointercancel", cancelFingerprintHold);
+    fingerprintButton.addEventListener("pointerleave", cancelFingerprintHold);
+    fingerprintButton.addEventListener("contextmenu", (event) => event.preventDefault());
+  }
+});
 
 /* VIDEO 1 */
 function showFirstVideo(){
@@ -2099,7 +2254,7 @@ function finishFirstVideo(){
   const percent = document.getElementById("errorPercent");
 
   screen.classList.remove("hidden");
-  loader.style.display = "block";
+  loader.style.display = "flex";
   content.style.display = "none";
   fill.style.width = "0%";
   percent.textContent = "0%";
@@ -2148,7 +2303,7 @@ function finishMexVideo(){
   const percent = document.getElementById("analysisPercent");
 
   screen.classList.remove("hidden");
-  loader.style.display = "block";
+  loader.style.display = "flex";
   content.style.display = "none";
   fill.style.width = "0%";
   percent.textContent = "0%";
@@ -2182,7 +2337,7 @@ function showRecovery(){
   screen.classList.remove("hidden");
   fill.style.width = "0%";
   percent.textContent = "0%";
-  loader.style.display = "block";
+  loader.style.display = "flex";
   content.style.display = "none";
 
   let value = 0;
