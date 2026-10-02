@@ -1454,6 +1454,150 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Portada v20: alto contenido + mejor distribución ===== */
+#coverScreen {
+  min-height: auto !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+.folder-cover {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 7px !important;
+}
+
+.folder-inner {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 20px 20px 16px !important;
+  justify-content: flex-start !important;
+}
+
+/* Repartir mejor cada bloque en vertical */
+.folder-ornament-top {
+  margin-bottom: 14px !important;
+}
+
+.folder-society {
+  margin-bottom: 0 !important;
+}
+
+.folder-rule {
+  margin: 12px auto 15px !important;
+}
+
+.folder-emblem {
+  margin: 17px 0 13px !important;
+}
+
+.folder-case-id {
+  margin-bottom: 13px !important;
+}
+
+.folder-title-block {
+  margin-bottom: 5px !important;
+}
+
+.folder-case-title {
+  margin-bottom: 0 !important;
+}
+
+.folder-status-stamp {
+  margin: 17px auto 10px !important;
+}
+
+.folder-access {
+  margin-top: 10px !important;
+}
+
+.folder-access-rule {
+  margin: 0 0 10px !important;
+}
+
+.folder-access .password-heading {
+  margin-bottom: 10px !important;
+}
+
+.password-inline {
+  margin-bottom: 0 !important;
+}
+
+.folder-access .password-message {
+  min-height: 38px !important;
+  margin-top: 10px !important;
+}
+
+.folder-ornament-bottom {
+  margin-top: 12px !important;
+}
+
+/* Marca de agua algo más visible */
+.folder-inner::after {
+  color: rgba(208,178,116,.055) !important;
+}
+
+@media(max-width:540px) {
+  #coverScreen {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .folder-cover,
+  .folder-inner {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .folder-inner {
+    padding-top: 19px !important;
+    padding-bottom: 14px !important;
+  }
+}
+
+@media(max-width:380px) {
+  .folder-inner {
+    padding: 18px 14px 12px !important;
+  }
+
+  .folder-ornament-top {
+    margin-bottom: 12px !important;
+  }
+
+  .folder-rule {
+    margin: 10px auto 13px !important;
+  }
+
+  .folder-emblem {
+    margin: 14px 0 11px !important;
+  }
+
+  .folder-case-id {
+    margin-bottom: 11px !important;
+  }
+
+  .folder-status-stamp {
+    margin: 14px auto 8px !important;
+  }
+
+  .folder-access {
+    margin-top: 8px !important;
+  }
+
+  .folder-access-rule {
+    margin-bottom: 8px !important;
+  }
+
+  .folder-access .password-heading {
+    margin-bottom: 8px !important;
+  }
+
+  .folder-ornament-bottom {
+    margin-top: 10px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1660,7 +1804,7 @@ function checkCasePassword(){
     "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
     "Clave incorrecta. Moriarty diría que casi lo lograste, pero se está divirtiendo demasiado viéndote intentarlo.",
     "No coincide. Mycroft ya parece decepcionado y bastante convencido de que le estás haciendo perder el tiempo.",
-    "Incorrecto otra vez. Es algo elemental, mi querido Watson - dice Sherlock. Mejor me llamo al silencio - refunfuña Watson"
+    "Incorrecto otra vez. Es algo elemental, mi querido Watson - dice Sherlock. Mejor voy a llamarme al silencio - protestó Watson."
   ];
 
   message.textContent = replies[(passwordAttempt - 1) % replies.length];
