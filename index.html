@@ -1933,6 +1933,26 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Ajustes puntuales v26 ===== */
+#coverScreen {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.folder-cover {
+  padding: 8px !important; /* le da apenas un poco más de presencia vertical */
+}
+
+.folder-inner {
+  min-height: calc(93svh - 16px) !important;
+}
+
+.folder-ornament-bottom {
+  margin-top: auto !important;
+  padding-top: 12px !important;
+}
+
 </style>
 </head>
 <body>
@@ -2040,7 +2060,7 @@ button { font-size: 17px; }
   <div id="errorPercent" class="percent">0%</div>
 </div>
 <div id="errorContent" style="display:none;">
-<div class="kicker">THE SHERLOCK HOLMES SOCIETY · LONDON</div><h2>VERIFICACIÓN DE UBICACIÓN</h2><div class="subtitle">Expediente SH-081126</div><div class="rule">❧</div>
+<div class="kicker">THE SHERLOCK HOLMES SOCIETY · LONDON</div><h2>RASTREO DE UBICACION</h2><div class="subtitle">Expediente SH-081126</div><div class="rule">❧</div>
 <div class="file-stamp">ANOMALÍA DETECTADA</div>
 <div class="evidence location-evidence">
 <div class="evidence-check"><span>EXPEDIENTE</span><span class="dots"></span><span class="ok">CONFIRMADO</span></div>
@@ -2071,8 +2091,8 @@ button { font-size: 17px; }
 <div class="evidence">
 <div class="row"><div class="cell">Ubicación</div><div class="cell ok">MOVISTAR ARENA ✓</div></div>
 <div class="row"><div class="cell">Fecha</div><div class="cell ok">08.11.2026 ✓</div></div>
-<div class="row"><div class="cell">Acompañante</div><div class="cell ok">PATO ✓</div></div>
 <div class="row"><div class="cell">Destinataria</div><div class="cell ok">LEILA MAYA ✓</div></div>
+<div class="row"><div class="cell">Acompañante</div><div class="cell ok">PATO ✓</div></div>
 </div>
 <div class="reveal-title">ENTRADAS ENCONTRADAS</div><p class="force-justify">La verdadera reserva ha sido recuperada satisfactoriamente.</p>
 <button onclick="showRecovery()">RECUPERAR ENTRADAS</button>
