@@ -1720,6 +1720,112 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Redistribución vertical de portada · v22 ===== */
+
+/* Mantener la altura de v21 */
+.folder-inner {
+  min-height: calc(92svh - 18px) !important;
+  padding-top: 24px !important;
+  padding-bottom: 20px !important;
+}
+
+/* Dar más aire real entre los bloques */
+.folder-ornament-top {
+  margin-bottom: 16px !important;
+}
+
+.folder-rule {
+  margin: 13px auto 17px !important;
+}
+
+.folder-emblem {
+  margin: 20px 0 15px !important;
+}
+
+.folder-case-id {
+  margin-bottom: 15px !important;
+}
+
+.folder-title-block {
+  margin-bottom: 7px !important;
+}
+
+.folder-status-stamp {
+  margin: 20px auto 12px !important;
+}
+
+.folder-access {
+  margin-top: 13px !important;
+}
+
+.folder-access-rule {
+  margin: 0 0 11px !important;
+}
+
+.folder-access .password-heading {
+  margin-bottom: 10px !important;
+}
+
+.folder-access .password-message {
+  margin-top: 11px !important;
+}
+
+.folder-ornament-bottom {
+  margin-top: 15px !important;
+}
+
+/* En pantallas algo más bajas, conservar el equilibrio sin volver a comprimir demasiado */
+@media(max-height:740px) and (max-width:540px) {
+  .folder-inner {
+    min-height: calc(90svh - 16px) !important;
+    padding-top: 20px !important;
+    padding-bottom: 15px !important;
+  }
+
+  .folder-ornament-top { margin-bottom: 12px !important; }
+  .folder-rule { margin: 10px auto 13px !important; }
+  .folder-emblem { margin: 15px 0 11px !important; }
+  .folder-case-id { margin-bottom: 11px !important; }
+  .folder-title-block { margin-bottom: 5px !important; }
+  .folder-status-stamp { margin: 15px auto 9px !important; }
+  .folder-access { margin-top: 9px !important; }
+  .folder-access-rule { margin-bottom: 8px !important; }
+  .folder-access .password-heading { margin-bottom: 8px !important; }
+  .folder-access .password-message { margin-top: 9px !important; }
+  .folder-ornament-bottom { margin-top: 10px !important; }
+}
+
+
+/* ===== Marca de agua móvil · v23 ===== */
+.folder-inner::after {
+  content: "SH-JW" !important;
+  white-space: nowrap !important;
+  width: auto !important;
+  max-width: calc(100% - 36px) !important;
+  font-size: clamp(82px, 27vw, 138px) !important;
+  letter-spacing: -.07em !important;
+  line-height: 1 !important;
+  color: rgba(208,178,116,.065) !important;
+  top: 245px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+@media(max-width:380px) {
+  .folder-inner::after {
+    font-size: clamp(72px, 25vw, 105px) !important;
+    max-width: calc(100% - 28px) !important;
+    letter-spacing: -.08em !important;
+  }
+}
+
+@media(max-height:740px) and (max-width:540px) {
+  .folder-inner::after {
+    top: 218px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1922,9 +2028,9 @@ function checkCasePassword(){
   message.classList.remove("success");
 
   const replies = [
-    "Código incorrecto. Sherlock descubrió el código al instante...pero por supuesto, no pensó en avisarte.",
+    "Clave incorrecta. Sherlock descubrió el código al instante...pero por supuesto, no pensó en avisarte.",
     "Acceso denegado. Watson asegura que él tampoco logró descifrar la contraseña.",
-    "Clave incorrecta. Moriarty casi te la dice, pero se está divirtiendo demasiado viéndote intentarlo.",
+    "Código incorrecto. Moriarty casi te lo dice, pero se está divirtiendo demasiado viéndote intentarlo.",
     "No coincide. Mycroft ya parece decepcionado y bastante convencido de que le estás haciendo perder el tiempo.",
     "Incorrecto otra vez. Es algo elemental, mi querido Watson - dice Sherlock. Mejor voy a llamarme al silencio - protestó Watson."
   ];
