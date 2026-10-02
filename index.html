@@ -1352,6 +1352,108 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Reequilibrio vertical de portada · v19 ===== */
+#coverScreen {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.folder-cover {
+  padding: 8px !important;
+}
+
+.folder-inner {
+  min-height: calc(100vh - 32px) !important;
+  padding: 26px 20px 20px !important;
+  justify-content: flex-start !important;
+}
+
+.folder-ornament-top {
+  margin-bottom: 12px !important;
+}
+
+.folder-rule {
+  margin: 10px auto 14px !important;
+}
+
+.folder-emblem {
+  margin: 16px 0 12px !important;
+}
+
+.folder-case-id {
+  margin-bottom: 11px !important;
+}
+
+.folder-title-block {
+  margin-bottom: 2px !important;
+}
+
+.folder-status-stamp {
+  margin: 15px auto 8px !important;
+}
+
+.folder-access {
+  margin-top: 8px !important;
+}
+
+.folder-access-rule {
+  margin: 0 0 8px !important;
+}
+
+.folder-access .password-heading {
+  margin-bottom: 8px !important;
+}
+
+.folder-access .password-message {
+  min-height: 38px !important;
+  margin-top: 9px !important;
+}
+
+.folder-ornament-bottom {
+  margin-top: 11px !important;
+}
+
+@media(max-width:540px) {
+  #coverScreen {
+    min-height: 100vh !important;
+  }
+
+  .folder-cover {
+    min-height: calc(100vh - 16px) !important;
+  }
+
+  .folder-inner {
+    min-height: calc(100vh - 32px) !important;
+    height: auto !important;
+    padding-top: 24px !important;
+    padding-bottom: 18px !important;
+  }
+}
+
+@media(max-width:380px) {
+  .folder-inner {
+    padding: 22px 14px 16px !important;
+  }
+
+  .folder-emblem {
+    margin-top: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .folder-status-stamp {
+    margin-top: 13px !important;
+  }
+
+  .folder-access {
+    margin-top: 7px !important;
+  }
+
+  .folder-ornament-bottom {
+    margin-top: 9px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1381,7 +1483,7 @@ button { font-size: 17px; }
         </h1>
       </div>
 
-      <div class="folder-status-stamp">CLASIFICACIÓN RESERVADA</div>
+      <div class="folder-status-stamp">ARCHIVO CLASIFICADO</div>
 
       <div class="folder-access password-panel">
         <div class="folder-access-rule"><span>❧</span></div>
@@ -1558,7 +1660,7 @@ function checkCasePassword(){
     "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
     "Clave incorrecta. Moriarty diría que casi lo lograste, pero se está divirtiendo demasiado viéndote intentarlo.",
     "No coincide. Mycroft ya parece decepcionado y bastante convencido de que le estás haciendo perder el tiempo.",
-    "Es algo elemental, mi querido Watson... la respuesta está a la vista; sólo falta observar las pistas con un poco más de atención."
+    "Incorrecto otra vez. Es algo elemental, mi querido Watson - dice Sherlock. Mejor me llamo al silencio - refunfuña Watson"
   ];
 
   message.textContent = replies[(passwordAttempt - 1) % replies.length];
