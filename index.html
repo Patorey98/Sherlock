@@ -898,7 +898,7 @@ button { font-size: 17px; }
 }
 
 .folder-inner::after {
-  content: "SHS";
+  content: "SH-JW";
   position: absolute;
   left: 50%;
   top: 37%;
@@ -1598,6 +1598,128 @@ button { font-size: 17px; }
   }
 }
 
+
+/* ===== Ajustes de portada · v21 ===== */
+
+/* Altura intermedia entre v19 y v20, usando viewport móvil real */
+#coverScreen {
+  min-height: auto !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+.folder-cover {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 7px !important;
+}
+
+.folder-inner {
+  position: relative !important;
+  min-height: calc(92svh - 18px) !important;
+  height: auto !important;
+  padding: 22px 20px 16px !important;
+  justify-content: flex-start !important;
+}
+
+/* Redistribución vertical para aprovechar la nueva altura */
+.folder-ornament-top {
+  margin-bottom: 13px !important;
+}
+
+.folder-rule {
+  margin: 11px auto 14px !important;
+}
+
+.folder-emblem {
+  margin: 16px 0 12px !important;
+}
+
+.folder-case-id {
+  margin-bottom: 12px !important;
+}
+
+.folder-title-block {
+  margin-bottom: 4px !important;
+}
+
+.folder-status-stamp {
+  margin: 16px auto 9px !important;
+}
+
+.folder-access {
+  margin-top: 9px !important;
+}
+
+.folder-access-rule {
+  margin: 0 0 9px !important;
+}
+
+.folder-access .password-heading {
+  margin-bottom: 9px !important;
+}
+
+.folder-access .password-message {
+  min-height: 40px !important;
+  margin-top: 9px !important;
+  font-size: 15.5px !important;
+  line-height: 1.34 !important;
+}
+
+.folder-ornament-bottom {
+  margin-top: 10px !important;
+}
+
+/* Marca de agua más visible y anclada:
+   no cambia de posición aunque el mensaje de error ocupe más líneas */
+.folder-inner::after {
+  content: "SH-JW" !important;
+  top: 245px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  color: rgba(208,178,116,.085) !important;
+  font-size: min(39vw, 190px) !important;
+  line-height: 1 !important;
+}
+
+/* Si la pantalla es corta, compactar de forma controlada */
+@media(max-height:740px) and (max-width:540px) {
+  .folder-inner {
+    min-height: calc(90svh - 16px) !important;
+    padding-top: 18px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .folder-ornament-top { margin-bottom: 10px !important; }
+  .folder-rule { margin: 9px auto 11px !important; }
+  .folder-emblem { margin: 12px 0 9px !important; }
+  .folder-case-id { margin-bottom: 9px !important; }
+  .folder-status-stamp { margin: 12px auto 7px !important; }
+  .folder-access { margin-top: 7px !important; }
+  .folder-access-rule { margin-bottom: 7px !important; }
+  .folder-access .password-heading { margin-bottom: 7px !important; }
+  .folder-ornament-bottom { margin-top: 7px !important; }
+
+  .folder-inner::after {
+    top: 218px !important;
+  }
+}
+
+@media(max-width:380px) {
+  .folder-inner {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .folder-access .password-message {
+    font-size: 14.5px !important;
+  }
+
+  .folder-inner::after {
+    font-size: min(38vw, 160px) !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1800,9 +1922,9 @@ function checkCasePassword(){
   message.classList.remove("success");
 
   const replies = [
-    "Código incorrecto. Sherlock detectó la falla al instante...pero por supuesto, no pensó en avisar.",
-    "Acceso denegado. Watson asegura que él tampoco sabe la contraseña.",
-    "Clave incorrecta. Moriarty diría que casi lo lograste, pero se está divirtiendo demasiado viéndote intentarlo.",
+    "Código incorrecto. Sherlock descubrió el código al instante...pero por supuesto, no pensó en avisarte.",
+    "Acceso denegado. Watson asegura que él tampoco logró descifrar la contraseña.",
+    "Clave incorrecta. Moriarty casi te la dice, pero se está divirtiendo demasiado viéndote intentarlo.",
     "No coincide. Mycroft ya parece decepcionado y bastante convencido de que le estás haciendo perder el tiempo.",
     "Incorrecto otra vez. Es algo elemental, mi querido Watson - dice Sherlock. Mejor voy a llamarme al silencio - protestó Watson."
   ];
